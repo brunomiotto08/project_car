@@ -96,4 +96,28 @@ try {
             </table>
         <?php endif; ?>
     </div>
+
+    <script>
+  const status = document.querySelector('.status.sucesso, .status.erro');
+  if (status) {
+    // entrada
+    status.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    status.style.opacity = '0';
+    status.style.transform = 'translateY(-8px)';
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        status.style.opacity = '1';
+        status.style.transform = 'translateY(0)';
+      });
+    });
+
+    // saída após 3s
+    setTimeout(() => {
+      status.style.opacity = '0';
+      status.style.transform = 'translateY(-8px)';
+      setTimeout(() => status.remove(), 400);
+    }, 3000);
+  }
+</script>
 </body>
